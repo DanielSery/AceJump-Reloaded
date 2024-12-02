@@ -1,7 +1,9 @@
+import org.jetbrains.intellij.platform.gradle.IntelliJPlatformType
+
 plugins {
   id("java")
   id("org.jetbrains.kotlin.jvm") version "1.9.25"
-  id("org.jetbrains.intellij") version "1.17.4"
+  id("org.jetbrains.intellij.platform") version "2.1.0"
 }
 
 group = "me.ihxq.acejump.reloaded"
@@ -9,16 +11,40 @@ version = "1.0-SNAPSHOT"
 
 repositories {
   mavenCentral()
+  intellijPlatform {
+    defaultRepositories()
+  }
+}
+
+dependencies {
+  intellijPlatform {
+    pluginVerifier()
+    intellijIdeaUltimate("2024.3")
+    instrumentationTools()
+  }
 }
 
 // Configure Gradle IntelliJ Plugin
 // Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
-intellij {
-  version.set("2024.3")
-  type.set("IC") // Target IDE Platform
-
-  plugins.set(listOf(/* Plugin Dependencies */))
+intellijPlatform {
+  pluginConfiguration {
+    // Plugin ID
+    id.set("schoettker.acejump.reloaded")
+    // Plugin display name
+    name.set("AceJump Reloaded")
+    // Plugin description
+    description.set("AceJump Reloaded is a plugin for IntelliJ IDEA that allows you to quickly navigate your code.")
+  }
+  pluginVerification {
+    ides {
+      ide(IntelliJPlatformType.IntellijIdeaUltimate, "2024.3")
+      select {
+        types = listOf(IntelliJPlatformType.IntellijIdeaUltimate)
+      }
+    }
+  }
 }
+
 
 tasks {
   // Set the JVM compatibility versions
@@ -32,7 +58,7 @@ tasks {
 
   patchPluginXml {
     sinceBuild.set("232")
-    untilBuild.set("242.*")
+    untilBuild.set("243.*")
   }
 
   signPlugin {
