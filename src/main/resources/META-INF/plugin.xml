@@ -8,7 +8,7 @@
   <name>AceJump-Lite</name>
 
   <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-  <vendor email="lennartschoettker@hotmail.com" url="https://github.com/schoettker">Lennart Schoettker</vendor>
+  <vendor email="lennartschoettker@gmail.com" url="https://github.com/schoettker">Lennart Schoettker</vendor>
 
   <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
        Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
