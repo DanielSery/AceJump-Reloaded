@@ -23,22 +23,22 @@
     <actions>
         <group id="emacsIDEAs" text="EmacsIDEAs" description="EmacsIDEAs">
             <!--<add-to-group group-id="MainMenu" anchor="last"  />-->
-            <action id="emacsIDEAs.AceJumpWord" class="me.ihxq.acejump.lite.acejump.AceJumpAction" text="AceJumpWord"
+            <action id="emacsIDEAs.AceJumpWord" class="me.ihxq.acejump.reloaded.acejump.AceJumpAction" text="AceJumpWord"
                     description="AceJumpWord">
                 <keyboard-shortcut keymap="$default" first-keystroke="alt w"/>
             </action>
 
-            <action id="emacsIDEAs.AceJump" class="me.ihxq.acejump.lite.acejump.AceJumpCharAction" text="AceJumpChar"
+            <action id="emacsIDEAs.AceJump" class="me.ihxq.acejump.reloaded.acejump.AceJumpCharAction" text="AceJumpChar"
                     description="AceJumpChar">
                 <keyboard-shortcut keymap="$default" first-keystroke="alt m"/>
             </action>
 
-            <action id="emacsIDEAs.AceJumpSelect" class="me.ihxq.acejump.lite.acejump.AceJumpSelectAction"
+            <action id="emacsIDEAs.AceJumpSelect" class="me.ihxq.acejump.reloaded.acejump.AceJumpSelectAction"
                     text="AceJumpSelect" description="AceJumpSelect">
                 <keyboard-shortcut keymap="$default" first-keystroke="meta I"/>
             </action>
 
-            <action id="emacsIDEAs.JustOneSpace" class="me.ihxq.acejump.lite.buildin.JustOneSpace" text="JustOneSpace"
+            <action id="emacsIDEAs.JustOneSpace" class="me.ihxq.acejump.reloaded.buildin.JustOneSpace" text="JustOneSpace"
                     description="JustOneSpace">
                 <keyboard-shortcut keymap="$default" first-keystroke="meta X"/>
             </action>
@@ -47,7 +47,7 @@
     </actions>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="me.ihxq.acejump.lite.options.PluginConfig"/>
-        <applicationConfigurable instance="me.ihxq.acejump.lite.options.IdeaConfigurable"/>
+        <applicationService serviceImplementation="me.ihxq.acejump.reloaded.options.PluginConfig"/>
+        <applicationConfigurable instance="me.ihxq.acejump.reloaded.options.IdeaConfigurable"/>
     </extensions>
 </idea-plugin>

@@ -25,15 +25,15 @@
 
   </extensions>
   <actions>
-    <action id="emacsIDEAs.AceJumpWord" class="me.ihxq.acejump.lite.acejump.AceJumpAction" text="AceJumpWord"
+    <action id="emacsIDEAs.AceJumpWord" class="me.ihxq.acejump.reloaded.acejump.AceJumpAction" text="AceJumpWord"
             description="AceJumpWord">
       <keyboard-shortcut keymap="$default" first-keystroke="alt w"/>
     </action>
-    <action id="me.ihxq.acejump.lite.acejump.AceJumpCharAction" class="me.ihxq.acejump.lite.acejump.AceJumpCharAction"
+    <action id="me.ihxq.acejump.reloaded.acejump.AceJumpCharAction" class="me.ihxq.acejump.reloaded.acejump.AceJumpCharAction"
             text="AceJumpCharAction"/>
-    <action id="me.ihxq.acejump.lite.acejump.AceJumpSelectAction"
-            class="me.ihxq.acejump.lite.acejump.AceJumpSelectAction" text="AceJumpSelectAction"/>
-    <action id="me.ihxq.acejump.lite.buildin.JustOneSpace" class="me.ihxq.acejump.lite.buildin.JustOneSpace"
+    <action id="me.ihxq.acejump.reloaded.acejump.AceJumpSelectAction"
+            class="me.ihxq.acejump.reloaded.acejump.AceJumpSelectAction" text="AceJumpSelectAction"/>
+    <action id="me.ihxq.acejump.reloaded.buildin.JustOneSpace" class="me.ihxq.acejump.reloaded.buildin.JustOneSpace"
             text="AceJumpOneSpace"/>
   </actions>
 </idea-plugin>

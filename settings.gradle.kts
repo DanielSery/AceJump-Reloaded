@@ -5,4 +5,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = "AceJump-Lite"
+rootProject.name = "AceJump-Reloaded"

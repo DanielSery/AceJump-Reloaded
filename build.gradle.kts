@@ -4,7 +4,7 @@ plugins {
   id("org.jetbrains.intellij") version "1.17.4"
 }
 
-group = "me.ihxq.acejump.lite"
+group = "me.ihxq.acejump.reloaded"
 version = "1.0-SNAPSHOT"
 
 repositories {
