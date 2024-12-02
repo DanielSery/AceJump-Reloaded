@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OffsetsFinder {
-    private final PluginConfig _config = ServiceManager.getService(PluginConfig.class);
+    private final PluginConfig _config = new PluginConfig();
 
     public List<Integer> getOffsets(char key, Editor editor, Editor selectedEditor) {
         Document document = editor.getDocument();

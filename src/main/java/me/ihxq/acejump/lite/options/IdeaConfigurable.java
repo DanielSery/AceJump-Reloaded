@@ -26,7 +26,7 @@ public class IdeaConfigurable implements Configurable {
     private JLabel _bgOpacityValue;
     private JTextField _markersCharsets;
 
-    private final PluginConfig config = ServiceManager.getService(PluginConfig.class);
+    private final PluginConfig config = new PluginConfig();
 
     private Logger logger = Logger.getLogger("df");
 

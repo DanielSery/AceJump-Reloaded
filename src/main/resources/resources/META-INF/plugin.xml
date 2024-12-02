@@ -25,6 +25,7 @@
             <!--<add-to-group group-id="MainMenu" anchor="last"  />-->
             <action id="emacsIDEAs.AceJumpWord" class="me.ihxq.acejump.lite.acejump.AceJumpAction" text="AceJumpWord"
                     description="AceJumpWord">
+                <keyboard-shortcut keymap="$default" first-keystroke="alt w"/>
             </action>
 
             <action id="emacsIDEAs.AceJump" class="me.ihxq.acejump.lite.acejump.AceJumpCharAction" text="AceJumpChar"

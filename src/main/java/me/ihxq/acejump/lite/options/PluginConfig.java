@@ -64,8 +64,4 @@ public class PluginConfig implements PersistentStateComponent<PluginConfig> {
         XmlSerializerUtil.copyBean(config, this);
     }
 
-    @Nullable
-    public static PluginConfig getInstance(Project project) {
-        return ServiceManager.getService(project, PluginConfig.class);
-    }
 }

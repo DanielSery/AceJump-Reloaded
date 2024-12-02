@@ -7,7 +7,7 @@ import me.ihxq.acejump.lite.options.PluginConfig;
 public class JOffset {
     public Editor editor;
     public int offset;
-    private final PluginConfig _config = ServiceManager.getService(PluginConfig.class);
+    private final PluginConfig _config = new PluginConfig();
 
     public JOffset(Editor editor, int offset) {
         this.editor = editor;

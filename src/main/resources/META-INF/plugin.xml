@@ -1,0 +1,39 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+  <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+  <id>me.ihxq.acejump.lite.AceJump-Lite</id>
+
+  <!-- Public plugin name should be written in Title Case.
+       Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+  <name>AceJump-Lite</name>
+
+  <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+  <vendor email="lennartschoettker@hotmail.com" url="https://github.com/schoettker">Lennart Schoettker</vendor>
+
+  <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+       Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+       Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+  <description>A plugin to easily jump around inside code inspired by emacs</description>
+
+  <!-- Product and plugin compatibility requirements.
+       Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+  <depends>com.intellij.modules.platform</depends>
+
+  <!-- Extension points defined by the plugin.
+       Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+  <extensions defaultExtensionNs="com.intellij">
+
+  </extensions>
+  <actions>
+    <action id="emacsIDEAs.AceJumpWord" class="me.ihxq.acejump.lite.acejump.AceJumpAction" text="AceJumpWord"
+            description="AceJumpWord">
+      <keyboard-shortcut keymap="$default" first-keystroke="alt w"/>
+    </action>
+    <action id="me.ihxq.acejump.lite.acejump.AceJumpCharAction" class="me.ihxq.acejump.lite.acejump.AceJumpCharAction"
+            text="AceJumpCharAction"/>
+    <action id="me.ihxq.acejump.lite.acejump.AceJumpSelectAction"
+            class="me.ihxq.acejump.lite.acejump.AceJumpSelectAction" text="AceJumpSelectAction"/>
+    <action id="me.ihxq.acejump.lite.buildin.JustOneSpace" class="me.ihxq.acejump.lite.buildin.JustOneSpace"
+            text="AceJumpOneSpace"/>
+  </actions>
+</idea-plugin>
