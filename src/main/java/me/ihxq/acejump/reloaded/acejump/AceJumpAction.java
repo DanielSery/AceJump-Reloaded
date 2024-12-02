@@ -18,6 +18,8 @@ import me.ihxq.acejump.reloaded.acejump.runnable.ShowMarkersRunnable;
 import me.ihxq.acejump.reloaded.common.EmacsIdeasAction;
 import me.ihxq.acejump.reloaded.util.EditorUtils;
 import me.ihxq.acejump.reloaded.util.Str;
+import org.jetbrains.annotations.ApiStatus;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -55,7 +57,7 @@ public class AceJumpAction extends EmacsIdeasAction {
     }
 
     @Override
-    public void actionPerformed(AnActionEvent e) {
+    public void actionPerformed(@NotNull AnActionEvent e) {
         if (isCalledFromOtherAction()) {
             _offsetsFinder = new CharOffsetsFinder();
         }

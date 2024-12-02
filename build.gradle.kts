@@ -6,8 +6,8 @@ plugins {
   id("org.jetbrains.intellij.platform") version "2.1.0"
 }
 
-group = "me.ihxq.acejump.reloaded"
-version = "1.0-SNAPSHOT"
+group = "schoettker.acejump.reloaded"
+version = "1.0.1-SNAPSHOT"
 
 repositories {
   mavenCentral()

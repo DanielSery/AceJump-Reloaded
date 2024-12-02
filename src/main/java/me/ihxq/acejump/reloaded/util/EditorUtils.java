@@ -1,10 +1,7 @@
 package me.ihxq.acejump.reloaded.util;
 
-import com.intellij.codeInsight.actions.ReformatCodeAction;
-import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.editor.EditorModificationUtil;
 import com.intellij.openapi.editor.LogicalPosition;
 import com.intellij.openapi.util.TextRange;
 
@@ -47,27 +44,5 @@ public class EditorUtils {
         }
 
         return offsets;
-    }
-
-    public static void reformatCode(AnActionEvent e) {
-        ReformatCodeAction reformat = new ReformatCodeAction();
-        reformat.actionPerformed(e);
-    }
-
-    public static void selectTextRange(Editor editor, TextRange[] tr) {
-        if (editor != null && tr != null) {
-            editor.getSelectionModel().setSelection(tr[0].getStartOffset(), tr[0].getEndOffset());
-        }
-    }
-
-    public static void selectTextRange(Editor editor, int startOffset, int endOffset) {
-        if (editor != null) {
-            editor.getSelectionModel().setSelection(startOffset, endOffset);
-        }
-    }
-
-    public static void deleteRange(TextRange tr, Editor editor) {
-        selectTextRange(editor, new TextRange[] {tr} );
-        EditorModificationUtil.deleteSelectedText(editor);
     }
 }
