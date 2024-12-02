@@ -1,11 +1,11 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
   <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
-  <id>me.ihxq.acejump.lite.AceJump-Lite</id>
+  <id>schoettker.acejump.reloaded.AceJump-Reloaded</id>
 
   <!-- Public plugin name should be written in Title Case.
        Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
-  <name>AceJump-Lite</name>
+  <name>AceJump-Reloaded</name>
 
   <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
   <vendor email="lennartschoettker@gmail.com" url="https://github.com/schoettker">Lennart Schoettker</vendor>
