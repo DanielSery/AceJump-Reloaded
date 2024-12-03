@@ -27,7 +27,6 @@
   <actions>
     <action id="emacsIDEAs.AceJumpWord" class="me.ihxq.acejump.reloaded.acejump.AceJumpAction" text="AceJumpWord"
             description="AceJumpWord">
-      <keyboard-shortcut keymap="$default" first-keystroke="alt w"/>
     </action>
     <action id="me.ihxq.acejump.reloaded.acejump.AceJumpCharAction" class="me.ihxq.acejump.reloaded.acejump.AceJumpCharAction"
             text="AceJumpCharAction"/>
