@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "schoettker.acejump.reloaded"
-version = "1.0.1-SNAPSHOT"
+version = "1.0.0-SNAPSHOT"
 
 repositories {
   mavenCentral()
@@ -58,7 +58,6 @@ tasks {
 
   patchPluginXml {
     sinceBuild.set("232")
-    untilBuild.set("243.*")
   }
 
   signPlugin {

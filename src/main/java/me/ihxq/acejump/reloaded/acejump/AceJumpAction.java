@@ -46,7 +46,7 @@ public class AceJumpAction extends EmacsIdeasAction {
     void performAction(AnActionEvent e) {
         _offsetsFinder = new CharOffsetsFinder();
         _isCalledFromOtherAction = true;
-        this.actionPerformed(e);
+        postAction(e);
 
         // show background on plugin activing
         Editor editor = getEditor();// 或者getEditors()？
@@ -54,6 +54,23 @@ public class AceJumpAction extends EmacsIdeasAction {
         _markersPanels = new ArrayList<>();
         _markersPanels.add(markersPanel);
         showNewMarkersPanel(_markersPanels);
+    }
+
+    public void postAction(@NotNull AnActionEvent e) {
+        if (isCalledFromOtherAction()) {
+            _offsetsFinder = new CharOffsetsFinder();
+        }
+
+        Project p = getProjectFrom(e);
+
+        if (!ToolWindowManager.getInstance(p).isEditorComponentActive()) {
+            ToolWindowManager.getInstance(p).activateEditorComponent();
+            return;
+        }
+
+        if (super.initAction(e)) {
+            _contentComponent.addKeyListener(_showMarkersKeyListener);
+        }
     }
 
     @Override
