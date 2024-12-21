@@ -41,4 +41,9 @@
     <action id="schoettker.acejump.reloaded.buildin.JustOneSpace" class="schoettker.acejump.reloaded.buildin.JustOneSpace"
             text="AceJumpOneSpace"/>
   </actions>
+  <change-notes><![CDATA[
+<ul>
+  <li>Release notes: <a href="https://github.com/schoettker/AceJump-Reloaded/releases">https://github.com/schoettker/AceJump-Reloaded/releases/tag/v1.0.1</a></li>
+</ul>
+    ]]></change-notes>
 </idea-plugin>
