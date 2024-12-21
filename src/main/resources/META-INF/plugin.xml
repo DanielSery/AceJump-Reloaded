@@ -25,14 +25,14 @@
 
   </extensions>
   <actions>
-    <action id="emacsIDEAs.AceJumpWord" class="me.ihxq.acejump.reloaded.acejump.AceJumpAction" text="AceJumpWord"
+    <action id="emacsIDEAs.AceJumpWord" class="schoettker.acejump.reloaded.acejump.AceJumpAction" text="AceJumpWord"
             description="AceJumpWord">
     </action>
-    <action id="me.ihxq.acejump.reloaded.acejump.AceJumpCharAction" class="me.ihxq.acejump.reloaded.acejump.AceJumpCharAction"
+    <action id="schoettker.acejump.reloaded.acejump.AceJumpCharAction" class="schoettker.acejump.reloaded.acejump.AceJumpCharAction"
             text="AceJumpCharAction"/>
-    <action id="me.ihxq.acejump.reloaded.acejump.AceJumpSelectAction"
-            class="me.ihxq.acejump.reloaded.acejump.AceJumpSelectAction" text="AceJumpSelectAction"/>
-    <action id="me.ihxq.acejump.reloaded.buildin.JustOneSpace" class="me.ihxq.acejump.reloaded.buildin.JustOneSpace"
+    <action id="schoettker.acejump.reloaded.acejump.AceJumpSelectAction"
+            class="schoettker.acejump.reloaded.acejump.AceJumpSelectAction" text="AceJumpSelectAction"/>
+    <action id="schoettker.acejump.reloaded.buildin.JustOneSpace" class="schoettker.acejump.reloaded.buildin.JustOneSpace"
             text="AceJumpOneSpace"/>
   </actions>
 </idea-plugin>
