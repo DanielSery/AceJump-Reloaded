@@ -25,14 +25,14 @@ public class IdeaConfigurable implements Configurable {
     private JLabel _bgOpacityValue;
     private JTextField _markersCharsets;
 
-    private final PluginConfig config = new PluginConfig();
+    private final PluginConfig config = PluginConfig.getInstance().getState();
 
     private Logger logger = Logger.getLogger("df");
 
     @Nls
     @Override
     public String getDisplayName() {
-        return "AceJump-Lite";
+        return "AceJump-Reloaded";
     }
 
     @Nullable

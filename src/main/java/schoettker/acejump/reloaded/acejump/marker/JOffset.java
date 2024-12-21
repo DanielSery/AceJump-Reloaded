@@ -1,12 +1,10 @@
 package schoettker.acejump.reloaded.acejump.marker;
 
 import com.intellij.openapi.editor.Editor;
-import schoettker.acejump.reloaded.options.PluginConfig;
 
 public class JOffset {
     public Editor editor;
     public int offset;
-    private final PluginConfig _config = new PluginConfig();
 
     public JOffset(Editor editor, int offset) {
         this.editor = editor;

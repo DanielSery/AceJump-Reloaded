@@ -10,7 +10,7 @@ import java.awt.geom.Rectangle2D;
 import java.util.HashSet;
 
 public class MarkersPanel extends JComponent {
-    private final PluginConfig _config = new PluginConfig();
+    private final PluginConfig _config = PluginConfig.getInstance().getState();
 
     private Color PANEL_BACKGROUND_COLOR = _config.getPanelBackground();
     public Editor _editor;

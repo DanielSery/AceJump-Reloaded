@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OffsetsFinder {
-    private final PluginConfig _config = new PluginConfig();
+    private final PluginConfig _config = PluginConfig.getInstance().getState();
 
     public List<Integer> getOffsets(char key, Editor editor, Editor selectedEditor) {
         Document document = editor.getDocument();

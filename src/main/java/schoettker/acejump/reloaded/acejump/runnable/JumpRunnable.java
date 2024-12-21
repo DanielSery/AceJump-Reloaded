@@ -10,7 +10,7 @@ public class JumpRunnable implements Runnable {
     private JOffset _offsetToJump;
     @SuppressWarnings("FieldCanBeLocal")
     private AceJumpAction _action;
-    private final PluginConfig _config = new PluginConfig();
+    private final PluginConfig _config = PluginConfig.getInstance().getState();
 
 
     public JumpRunnable(JOffset _offsetToJump, AceJumpAction _action) {

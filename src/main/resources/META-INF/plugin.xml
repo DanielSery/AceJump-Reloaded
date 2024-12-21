@@ -22,7 +22,13 @@
   <!-- Extension points defined by the plugin.
        Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
   <extensions defaultExtensionNs="com.intellij">
-
+    <applicationConfigurable
+    parentId="tools"
+    displayName="AceJump Reloaded"
+    instance="schoettker.acejump.reloaded.options.IdeaConfigurable"
+    id="schoettker.acejump.reloaded.options.IdeaConfigurable"
+    />
+    <applicationService serviceImplementation="schoettker.acejump.reloaded.options.PluginConfig" />
   </extensions>
   <actions>
     <action id="emacsIDEAs.AceJumpWord" class="schoettker.acejump.reloaded.acejump.AceJumpAction" text="AceJumpWord"

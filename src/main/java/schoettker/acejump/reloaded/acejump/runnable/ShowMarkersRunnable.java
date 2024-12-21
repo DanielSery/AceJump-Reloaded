@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ShowMarkersRunnable implements Runnable {
     private static final char INFINITE_JUMP_CHAR = '/';
-    private static final PluginConfig _config = new PluginConfig();
+    private final PluginConfig _config = PluginConfig.getInstance().getState();
     // private static final String MARKER_CHARSET = "asdfjeghiybcmnopqrtuvwkl";
     private final List<JOffset> _offsets;
     private final AceJumpAction _action;
