@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "schoettker.acejump.reloaded"
-version = "1.0.1"
+version = "1.0.2"
 
 repositories {
   mavenCentral()
@@ -34,6 +34,9 @@ intellijPlatform {
     name.set("AceJump Reloaded")
     // Plugin description
     description.set("AceJump Reloaded is a plugin for IntelliJ IDEA that allows you to quickly navigate your code.")
+    ideaVersion {
+      untilBuild = provider { null }
+    }
   }
   pluginVerification {
     ides {
