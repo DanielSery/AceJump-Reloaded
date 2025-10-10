@@ -6,7 +6,7 @@ plugins {
   id("org.jetbrains.intellij.platform") version "2.1.0"
 }
 
-group = "schoettker.acejump.reloaded"
+group = "schoettker.acejump.reloaded2"
 version = "1.0.2"
 
 repositories {
@@ -29,9 +29,9 @@ dependencies {
 intellijPlatform {
   pluginConfiguration {
     // Plugin ID
-    id.set("schoettker.acejump.reloaded")
+    id.set("schoettker.acejump.reloaded2")
     // Plugin display name
-    name.set("AceJump Reloaded")
+    name.set("AceJump Reloaded2")
     // Plugin description
     description.set("AceJump Reloaded is a plugin for IntelliJ IDEA that allows you to quickly navigate your code.")
     ideaVersion {
