@@ -5,6 +5,7 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindowManager;
+import org.jetbrains.annotations.NotNull;
 import schoettker.acejump.reloaded.acejump.command.CommandAroundJump;
 import schoettker.acejump.reloaded.acejump.command.SelectAfterJumpCommand;
 import schoettker.acejump.reloaded.acejump.marker.JOffset;
@@ -18,7 +19,6 @@ import schoettker.acejump.reloaded.acejump.runnable.ShowMarkersRunnable;
 import schoettker.acejump.reloaded.common.EmacsIdeasAction;
 import schoettker.acejump.reloaded.util.EditorUtils;
 import schoettker.acejump.reloaded.util.Str;
-import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -90,7 +90,8 @@ public class AceJumpAction extends EmacsIdeasAction {
         }
     }
 
-    private boolean handleShowMarkersKey(char key) {
+    private boolean handleShowMarkersKey(KeyEvent keyEvent) {
+        char key = keyEvent.getKeyChar();
         if (EditorUtils.isPrintableChar(key)) {
             runReadAction(new ShowMarkersRunnable(getOffsetsOfCharInVisibleArea(key), (AceJumpAction) _action));
 
@@ -108,10 +109,12 @@ public class AceJumpAction extends EmacsIdeasAction {
             return true;
         }
 
+        cleanupSetupsInAndBackToNormalEditingMode();
         return false;
     }
 
-    private boolean handleJumpToMarkerKey(char key) {
+    private boolean handleJumpToMarkerKey(KeyEvent keyEvent) {
+        char key = keyEvent.getKeyChar();
         if (!_markers.containsMarkerWithKey(key)) {
             key = Str.getCounterCase(key);
         }
@@ -125,10 +128,11 @@ public class AceJumpAction extends EmacsIdeasAction {
                 return false;
             }
 
-            jumpToOffset(offsetsOfKey.get(0));
+            jumpToOffset(offsetsOfKey.getFirst());
             return true;
         }
 
+        cleanupSetupsInAndBackToNormalEditingMode();
         return false;
     }
 
@@ -136,19 +140,19 @@ public class AceJumpAction extends EmacsIdeasAction {
         return new KeyListener() {
             public void keyTyped(KeyEvent keyEvent) {
                 keyEvent.consume();
-                boolean showMarkersFinished = handleShowMarkersKey(keyEvent.getKeyChar());
+                boolean showMarkersFinished = handleShowMarkersKey(keyEvent);
                 if (showMarkersFinished) {
                     _contentComponent.removeKeyListener(_showMarkersKeyListener);
                 }
             }
 
             public void keyPressed(KeyEvent keyEvent) {
-                if (KeyEvent.VK_ESCAPE == keyEvent.getKeyChar()) {
-                    cleanupSetupsInAndBackToNormalEditingMode();
-                }
             }
 
             public void keyReleased(KeyEvent keyEvent) {
+                if (keyEvent.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    cleanupSetupsInAndBackToNormalEditingMode();
+                }
             }
         };
     }
@@ -157,16 +161,11 @@ public class AceJumpAction extends EmacsIdeasAction {
         return new KeyListener() {
             public void keyTyped(KeyEvent keyEvent) {
                 keyEvent.consume();
-
-                if (KeyEvent.VK_SPACE == keyEvent.getKeyChar() || KeyEvent.VK_SEMICOLON == keyEvent.getKeyChar()) {
-                    cleanupSetupsInAndBackToNormalEditingMode();
-                }
-
                 if (keyEvent.isShiftDown()) {
                     addCommandAroundJump(new SelectAfterJumpCommand(_editor));
                 }
 
-                boolean jumpFinished = handleJumpToMarkerKey(keyEvent.getKeyChar());
+                boolean jumpFinished = handleJumpToMarkerKey(keyEvent);
                 if (jumpFinished) {
                     _contentComponent.removeKeyListener(_jumpToMarkerKeyListener);
                     handlePendingActionOnSuccess();
@@ -174,12 +173,12 @@ public class AceJumpAction extends EmacsIdeasAction {
             }
 
             public void keyPressed(KeyEvent keyEvent) {
-                if (KeyEvent.VK_ESCAPE == keyEvent.getKeyChar()) {
-                    cleanupSetupsInAndBackToNormalEditingMode();
-                }
             }
 
             public void keyReleased(KeyEvent keyEvent) {
+                if (keyEvent.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    cleanupSetupsInAndBackToNormalEditingMode();
+                }
             }
         };
     }
@@ -228,7 +227,7 @@ public class AceJumpAction extends EmacsIdeasAction {
 
         if (_jumpToMarkerKeyListener != null) {
             _contentComponent.removeKeyListener(_jumpToMarkerKeyListener);
-            _showMarkersKeyListener = null;
+            _jumpToMarkerKeyListener = null;
         }
 
         repaintParent();
