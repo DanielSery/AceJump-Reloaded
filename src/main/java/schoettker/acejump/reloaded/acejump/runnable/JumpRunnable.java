@@ -21,11 +21,7 @@ public class JumpRunnable implements Runnable {
     @Override
     public void run() {
         _offsetToJump.editor.getContentComponent().requestFocus();
-        if (_config._jumpBehind && !isLineEndOrLineStartOffset(_offsetToJump.offset)) {
-            _offsetToJump.editor.getCaretModel().moveToOffset(_offsetToJump.offset + 1);
-        } else {
-            _offsetToJump.editor.getCaretModel().moveToOffset(_offsetToJump.offset);
-        }
+        _offsetToJump.editor.getCaretModel().moveToOffset(_offsetToJump.offset);
         _offsetToJump.editor.getSelectionModel().removeSelection();
     }
 

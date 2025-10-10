@@ -22,7 +22,6 @@ public class PluginConfig implements PersistentStateComponent<PluginConfig> {
   int _secondJumpForeground =
       new JBColor(new Color(255, 248, 248), new Color(254, 253, 254)).getRGB();
   boolean _needSelectTextAfterJump = true;
-  public boolean _jumpBehind = false;
   int _panelBackground = new JBColor(new Color(111, 110, 110), new Color(71, 71, 73)).getRGB();
   public boolean _toUpperCase = true;
   public String _fontType = "Bold";

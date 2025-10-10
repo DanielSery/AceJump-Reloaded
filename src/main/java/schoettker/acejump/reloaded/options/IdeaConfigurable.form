@@ -105,16 +105,6 @@
               <text value="Jump To behind"/>
             </properties>
           </component>
-          <component id="87054" class="javax.swing.JCheckBox" binding="_jumpBehind">
-            <constraints>
-              <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="126" height="24"/>
-              </grid>
-            </constraints>
-            <properties>
-              <text value=""/>
-            </properties>
-          </component>
           <component id="bf5ab" class="javax.swing.JLabel">
             <constraints>
               <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>

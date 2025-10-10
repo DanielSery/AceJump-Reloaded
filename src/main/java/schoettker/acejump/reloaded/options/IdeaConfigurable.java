@@ -17,7 +17,6 @@ public class IdeaConfigurable implements Configurable {
     private ColorPanel _secondJumpBackground;
     private ColorPanel _secondJumpForeground;
     private JCheckBox _needSelectTextAfterJump;
-    private JCheckBox _jumpBehind;
     private ColorPanel _panelBackground;
     private JCheckBox _toUpperCase;
     private JComboBox<?> _fontType;
@@ -48,7 +47,6 @@ public class IdeaConfigurable implements Configurable {
         _secondJumpForeground.setSelectedColor(config.getSecondJumpForeground());
         _panelBackground.setSelectedColor(config.getPanelBackground());
         _needSelectTextAfterJump.setSelected(config._needSelectTextAfterJump);
-        _jumpBehind.setSelected(config._jumpBehind);
         _toUpperCase.setSelected(config._toUpperCase);
         _fontType.setSelectedItem(config._fontType);
         _bgOpacity.setValue(config._bgOpacity);
@@ -73,7 +71,6 @@ public class IdeaConfigurable implements Configurable {
                 || _secondJumpForeground.getSelectedColor() != config.getSecondJumpForeground()
                 || _panelBackground.getSelectedColor() != config.getPanelBackground()
                 || _needSelectTextAfterJump.isSelected() != config._needSelectTextAfterJump
-                || _jumpBehind.isSelected() != config._jumpBehind
                 || _fontType.getSelectedItem() != config._fontType
                 || _bgOpacity.getValue() != config._bgOpacity
                 || !_markersCharsets.getText().equals(config._markersCharsets)
@@ -103,7 +100,6 @@ public class IdeaConfigurable implements Configurable {
             config._panelBackground = _panelBackground.getSelectedColor().getRGB();
         }
         config._needSelectTextAfterJump = _needSelectTextAfterJump.isSelected();
-        config._jumpBehind = _jumpBehind.isSelected();
         config._toUpperCase = _toUpperCase.isSelected();
         config._fontType = (String) _fontType.getSelectedItem();
         config._bgOpacity = _bgOpacity.getValue();

@@ -15,12 +15,11 @@ import java.util.List;
 public class ShowMarkersRunnable implements Runnable {
     private static final char INFINITE_JUMP_CHAR = '/';
     private final PluginConfig _config = PluginConfig.getInstance().getState();
-    // private static final String MARKER_CHARSET = "asdfjeghiybcmnopqrtuvwkl";
     private final List<JOffset> _offsets;
     private final AceJumpAction _action;
     private final Editor _editor;
     private final ArrayList<Editor> _editors;
-    private MarkerCollection _markerCollection;
+    private final MarkerCollection _markerCollection;
 
     private String getMarkerCharsets() {
         return  _config._markersCharsets;
@@ -114,8 +113,8 @@ public class ShowMarkersRunnable implements Runnable {
                 return joA.editor.hashCode() - joB.editor.hashCode();
             }
 
-            Integer oA = joA.offset;
-            Integer oB = joB.offset;
+            int oA = joA.offset;
+            int oB = joB.offset;
 
             int distA = Math.abs(oA - caretOffset);
             int distB = Math.abs(oB - caretOffset);
@@ -129,7 +128,7 @@ public class ShowMarkersRunnable implements Runnable {
     }
 
     private void sortOffsetsToImprovePriorityOfLineEnd() {
-        _offsets.sort(new Comparator<JOffset>() {
+        _offsets.sort(new Comparator<>() {
             @Override
             public int compare(JOffset joA, JOffset joB) {
                 if (joA.editor != joB.editor) {
