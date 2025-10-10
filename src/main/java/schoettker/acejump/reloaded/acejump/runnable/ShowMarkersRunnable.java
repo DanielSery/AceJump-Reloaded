@@ -41,7 +41,6 @@ public class ShowMarkersRunnable implements Runnable {
 
         int caretOffset = _editor.getCaretModel().getOffset();
         sortOffsetsByDistanceToCaret(caretOffset);
-        sortOffsetsToImprovePriorityOfLineEnd();
 
         int twiceJumpGroupCount = calcTwiceJumpGroupCount();
         int singleJumpCount = Math.min(getMarkerCharsets().length() - twiceJumpGroupCount, _offsets.size());
@@ -124,33 +123,6 @@ public class ShowMarkersRunnable implements Runnable {
             }
 
             return distA - distB;
-        });
-    }
-
-    private void sortOffsetsToImprovePriorityOfLineEnd() {
-        _offsets.sort(new Comparator<>() {
-            @Override
-            public int compare(JOffset joA, JOffset joB) {
-                if (joA.editor != joB.editor) {
-                    return joA.editor.hashCode() - joB.editor.hashCode();
-                }
-
-                Document document = joA.editor.getDocument();
-                boolean oAIsLineEndOffset = isLineEndOffset(joA.offset, document);
-                boolean oBIsLineEndOffset = isLineEndOffset(joB.offset, document);
-
-                if (oAIsLineEndOffset == oBIsLineEndOffset) {
-                    return 0;
-                }
-
-                return oAIsLineEndOffset ? -1 : 1;
-            }
-
-            private boolean isLineEndOffset(Integer oA, Document document) {
-                int lineA = document.getLineNumber(oA);
-                int lineEndOffset = document.getLineEndOffset(lineA);
-                return oA == lineEndOffset;
-            }
         });
     }
 }
