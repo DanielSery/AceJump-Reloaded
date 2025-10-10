@@ -1,11 +1,12 @@
 package schoettker.acejump.reloaded.acejump;
 
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindowManager;
 import org.jetbrains.annotations.NotNull;
+import schoettker.acejump.reloaded.acejump.actions.ActionPerformer;
+import schoettker.acejump.reloaded.acejump.actions.SimpleJumpPerformer;
 import schoettker.acejump.reloaded.acejump.command.CommandAroundJump;
 import schoettker.acejump.reloaded.acejump.command.SelectAfterJumpCommand;
 import schoettker.acejump.reloaded.acejump.marker.JOffset;
@@ -13,7 +14,6 @@ import schoettker.acejump.reloaded.acejump.marker.MarkerCollection;
 import schoettker.acejump.reloaded.acejump.marker.MarkersPanel;
 import schoettker.acejump.reloaded.acejump.offsets.OffsetsFinder;
 import schoettker.acejump.reloaded.acejump.offsets.WordStartOffsetFinder;
-import schoettker.acejump.reloaded.acejump.runnable.JumpRunnable;
 import schoettker.acejump.reloaded.acejump.runnable.ShowMarkersRunnable;
 import schoettker.acejump.reloaded.common.EmacsIdeasAction;
 import schoettker.acejump.reloaded.util.EditorUtils;
@@ -32,7 +32,7 @@ public class AceJumpAction extends EmacsIdeasAction {
     private KeyListener _jumpToMarkerKeyListener;
     private Stack<CommandAroundJump> _commandsAroundJump = new Stack<>();
     private static volatile AceJumpAction _instance;
-    private boolean _isCalledFromOtherAction; //TODO
+    private ActionPerformer _actionsPerformer = new SimpleJumpPerformer();
     private OffsetsFinder _offsetsFinder = new WordStartOffsetFinder();
 
     @SuppressWarnings("WeakerAccess")
@@ -40,20 +40,28 @@ public class AceJumpAction extends EmacsIdeasAction {
         _instance = this;
     }
 
-    void setOffsetsFinder(OffsetsFinder offsetsFinder) {
+    public void setOffsetsFinder(OffsetsFinder offsetsFinder) {
         _offsetsFinder = offsetsFinder;
     }
 
-    void performAction(AnActionEvent e) {
-        _isCalledFromOtherAction = true;
+    public void setActionsPerformer(ActionPerformer actionsPerformer) {
+        _actionsPerformer = actionsPerformer;
+    }
+
+    public void performAction(AnActionEvent e) {
         postAction(e);
 
         // show background on plugin activing
-        Editor editor = getEditor();// 或者getEditors()？
+        Editor editor = getEditor();
         MarkersPanel markersPanel = new MarkersPanel(editor, getMarkerCollection());
         ArrayList<MarkersPanel> markersPanels = new ArrayList<>();
         markersPanels.add(markersPanel);
         showNewMarkersPanel(markersPanels);
+    }
+
+    public void continueAction() {
+        _markers.clear();
+        runReadAction(new ShowMarkersRunnable(findOffsetsInEditors(), (AceJumpAction) _action));
     }
 
     public void postAction(@NotNull AnActionEvent e) {
@@ -100,8 +108,7 @@ public class AceJumpAction extends EmacsIdeasAction {
                 return false;
             }
 
-            jumpToOffset(offsetsOfKey.getFirst());
-            return true;
+            return _actionsPerformer.performAction(offsetsOfKey.getFirst(), this, _commandsAroundJump);
         }
 
         cleanupSetupsInAndBackToNormalEditingMode();
@@ -147,21 +154,6 @@ public class AceJumpAction extends EmacsIdeasAction {
         return jOffsets;
     }
 
-    public void jumpToOffset(final JOffset jumpOffset) {
-        for (CommandAroundJump cmd : _commandsAroundJump) {
-            cmd.beforeJump(jumpOffset);
-        }
-
-        ApplicationManager.getApplication().runReadAction(new JumpRunnable(jumpOffset, this));
-
-        for (CommandAroundJump cmd : _commandsAroundJump) {
-            cmd.preAfterJump(jumpOffset);
-            cmd.afterJump();
-        }
-
-        cleanupSetupsInAndBackToNormalEditingMode();
-    }
-
     public void cleanupSetupsInAndBackToNormalEditingMode() {
         if (_jumpToMarkerKeyListener != null) {
             _contentComponent.removeKeyListener(_jumpToMarkerKeyListener);
@@ -175,7 +167,6 @@ public class AceJumpAction extends EmacsIdeasAction {
         }
 
         _commandsAroundJump = new Stack<>();
-        _isCalledFromOtherAction = false;
         super.cleanupSetupsInAndBackToNormalEditingMode();
     }
 
@@ -213,18 +204,14 @@ public class AceJumpAction extends EmacsIdeasAction {
         return _markers;
     }
 
-    static AceJumpAction getInstance() {
+    public static AceJumpAction getInstance() {
         if (_instance == null) {
             _instance = new AceJumpAction();
         }
         return _instance;
     }
 
-    void addCommandAroundJump(CommandAroundJump commandAroundJump) {
+    public void addCommandAroundJump(CommandAroundJump commandAroundJump) {
         _commandsAroundJump.push(commandAroundJump);
-    }
-
-    private boolean isCalledFromOtherAction() {
-        return _isCalledFromOtherAction;
     }
 }

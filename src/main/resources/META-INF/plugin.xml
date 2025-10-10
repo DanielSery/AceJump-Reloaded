@@ -35,6 +35,8 @@
             text="AceJumpWordStartAction"/>
     <action id="schoettker.acejump.reloaded.acejump.AceJumpWordEndAction"
             class="schoettker.acejump.reloaded.acejump.AceJumpWordEndAction" text="AceJumpWordEndAction"/>
+      <action id="schoettker.acejump.reloaded.acejump.AceJumpWordSelectAction"
+              class="schoettker.acejump.reloaded.acejump.AceJumpWordSelectAction" text="AceJumpWordSelectAction"/>
   </actions>
   <change-notes><![CDATA[
 <ul>

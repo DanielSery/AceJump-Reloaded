@@ -26,7 +26,6 @@ public abstract class EmacsIdeasAction extends AnAction {
     protected Document _document;
     private KeyListener[] _keyListeners;
     private AnActionEvent _event;
-    private Project _project;
 
     public void cleanupSetupsInAndBackToNormalEditingMode() {
         restoreOldKeyListeners();
@@ -103,7 +102,6 @@ public abstract class EmacsIdeasAction extends AnAction {
         _document = _editor.getDocument();
         _action = this;
         _contentComponent = _editor.getContentComponent();
-        _project = getProjectFrom(e);
     }
 
     private void disableAllExistingKeyListeners() {
