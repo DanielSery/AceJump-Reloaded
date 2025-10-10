@@ -40,8 +40,11 @@ public class AceJumpAction extends EmacsIdeasAction {
         _instance = this;
     }
 
+    void setOffsetsFinder(OffsetsFinder offsetsFinder) {
+        _offsetsFinder = offsetsFinder;
+    }
+
     void performAction(AnActionEvent e) {
-        _offsetsFinder = new WordStartOffsetFinder();
         _isCalledFromOtherAction = true;
         postAction(e);
 
@@ -54,10 +57,6 @@ public class AceJumpAction extends EmacsIdeasAction {
     }
 
     public void postAction(@NotNull AnActionEvent e) {
-        if (isCalledFromOtherAction()) {
-            _offsetsFinder = new WordStartOffsetFinder();
-        }
-
         Project p = getProjectFrom(e);
 
         if (!ToolWindowManager.getInstance(p).isEditorComponentActive()) {
@@ -73,10 +72,6 @@ public class AceJumpAction extends EmacsIdeasAction {
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
-        if (isCalledFromOtherAction()) {
-            _offsetsFinder = new WordStartOffsetFinder();
-        }
-
         Project p = getProjectFrom(e);
 
         if (!ToolWindowManager.getInstance(p).isEditorComponentActive()) {
@@ -152,7 +147,7 @@ public class AceJumpAction extends EmacsIdeasAction {
         return jOffsets;
     }
 
-    private void jumpToOffset(final JOffset jumpOffset) {
+    public void jumpToOffset(final JOffset jumpOffset) {
         for (CommandAroundJump cmd : _commandsAroundJump) {
             cmd.beforeJump(jumpOffset);
         }
@@ -180,7 +175,6 @@ public class AceJumpAction extends EmacsIdeasAction {
         }
 
         _commandsAroundJump = new Stack<>();
-        _offsetsFinder = new WordStartOffsetFinder();
         _isCalledFromOtherAction = false;
         super.cleanupSetupsInAndBackToNormalEditingMode();
     }

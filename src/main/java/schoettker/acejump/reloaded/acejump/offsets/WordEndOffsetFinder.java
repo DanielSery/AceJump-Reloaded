@@ -1,4 +1,4 @@
-﻿package schoettker.acejump.reloaded.acejump.offsets;
+package schoettker.acejump.reloaded.acejump.offsets;
 
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.Editor;

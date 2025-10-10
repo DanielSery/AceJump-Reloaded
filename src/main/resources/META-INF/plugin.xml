@@ -31,12 +31,10 @@
     <applicationService serviceImplementation="schoettker.acejump.reloaded.options.PluginConfig" />
   </extensions>
   <actions>
-    <action id="emacsIDEAs.AceJumpWord2" class="schoettker.acejump.reloaded.acejump.AceJumpAction" text="AceJumpWord"
-            description="AceJumpWord"/>
-    <action id="schoettker.acejump.reloaded.acejump.AceJumpCharAction2" class="schoettker.acejump.reloaded.acejump.AceJumpCharAction"
-            text="AceJumpCharAction"/>
-    <action id="schoettker.acejump.reloaded.acejump.AceJumpSelectAction2"
-            class="schoettker.acejump.reloaded.acejump.AceJumpSelectAction" text="AceJumpSelectAction"/>
+    <action id="schoettker.acejump.reloaded.acejump.AceJumpWordStartAction" class="schoettker.acejump.reloaded.acejump.AceJumpWordStartAction"
+            text="AceJumpWordStartAction"/>
+    <action id="schoettker.acejump.reloaded.acejump.AceJumpWordEndAction"
+            class="schoettker.acejump.reloaded.acejump.AceJumpWordEndAction" text="AceJumpWordEndAction"/>
   </actions>
   <change-notes><![CDATA[
 <ul>
