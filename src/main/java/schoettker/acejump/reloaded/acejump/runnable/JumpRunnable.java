@@ -24,12 +24,4 @@ public class JumpRunnable implements Runnable {
         _offsetToJump.editor.getCaretModel().moveToOffset(_offsetToJump.offset);
         _offsetToJump.editor.getSelectionModel().removeSelection();
     }
-
-    private boolean isLineEndOrLineStartOffset(int offset) {
-        Document _document = _offsetToJump.editor.getDocument();
-        int lineNumber = _document.getLineNumber(offset);
-        int lineStartOffset = _document.getLineStartOffset(lineNumber);
-        int lineEndOffset = _document.getLineEndOffset(lineNumber);
-        return lineEndOffset == _offsetToJump.offset || lineStartOffset == _offsetToJump.offset;
-    }
 }

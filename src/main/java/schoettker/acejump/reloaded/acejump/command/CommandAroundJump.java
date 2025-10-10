@@ -1,10 +1,15 @@
 package schoettker.acejump.reloaded.acejump.command;
 
+import com.intellij.openapi.actionSystem.ActionManager;
+import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.editor.Editor;
+import com.intellij.openapi.ui.Messages;
 import schoettker.acejump.reloaded.acejump.marker.JOffset;
 
+import java.awt.event.InputEvent;
+
 public class CommandAroundJump {
-    private Editor _se; /*source editor*/
+    private final Editor _se; /*source editor*/
     private int _soff;
 
     private Editor _te; /*target editor*/
@@ -26,16 +31,6 @@ public class CommandAroundJump {
     public void afterJump() {
     }
 
-    public void focusSourceCaret() {
-        _se.getContentComponent().requestFocus();
-        _se.getCaretModel().moveToOffset(_soff);
-    }
-
-    public void focusTargetCaret() {
-        _te.getContentComponent().requestFocus();
-        _te.getCaretModel().moveToOffset(_toff);
-    }
-
     void selectJumpArea() {
         if (inSameEditor()) {
             if (_soff < _toff)
@@ -43,6 +38,16 @@ public class CommandAroundJump {
             else
                 _se.getSelectionModel().setSelection(_toff, _soff);
         }
+    }
+
+    void dispatchEvent(AnAction action, InputEvent inputEvent) {
+        ActionManager.getInstance().tryToExecute(
+                action,
+                inputEvent,
+                _se.getContentComponent(),
+                null,
+                true
+        );
     }
 
     private boolean inSameEditor() {

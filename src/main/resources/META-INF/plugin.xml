@@ -38,6 +38,10 @@
       <action id="schoettker.acejump.reloaded.acejump.AceJumpWordSelectAction"
               class="schoettker.acejump.reloaded.acejump.AceJumpWordSelectAction" text="AceJumpWordSelectAction"/>
   </actions>
+    <applicationListeners>
+        <listener class="schoettker.acejump.reloaded.acejump.ActionListener"
+                  topic="com.intellij.openapi.actionSystem.ex.AnActionListener"/>
+    </applicationListeners>
   <change-notes><![CDATA[
 <ul>
   <li>Release notes: <a href="https://github.com/schoettker/AceJump-Reloaded/releases">https://github.com/schoettker/AceJump-Reloaded/releases/tag/v1.0.1</a></li>

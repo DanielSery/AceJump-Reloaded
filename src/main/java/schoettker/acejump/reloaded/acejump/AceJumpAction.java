@@ -1,14 +1,18 @@
 package schoettker.acejump.reloaded.acejump;
 
+import com.intellij.openapi.actionSystem.ActionManager;
+import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.wm.ToolWindowManager;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import schoettker.acejump.reloaded.acejump.actions.ActionPerformer;
 import schoettker.acejump.reloaded.acejump.actions.SimpleJumpPerformer;
 import schoettker.acejump.reloaded.acejump.command.CommandAroundJump;
-import schoettker.acejump.reloaded.acejump.command.SelectAfterJumpCommand;
+import schoettker.acejump.reloaded.acejump.command.TypeKeyAfterJumpCommand;
 import schoettker.acejump.reloaded.acejump.marker.JOffset;
 import schoettker.acejump.reloaded.acejump.marker.MarkerCollection;
 import schoettker.acejump.reloaded.acejump.marker.MarkersPanel;
@@ -20,6 +24,7 @@ import schoettker.acejump.reloaded.util.EditorUtils;
 import schoettker.acejump.reloaded.util.Str;
 
 import java.awt.*;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -34,6 +39,7 @@ public class AceJumpAction extends EmacsIdeasAction {
     private static volatile AceJumpAction _instance;
     private ActionPerformer _actionsPerformer = new SimpleJumpPerformer();
     private OffsetsFinder _offsetsFinder = new WordStartOffsetFinder();
+    private boolean _performingAction = false;
 
     @SuppressWarnings("WeakerAccess")
     public AceJumpAction() {
@@ -108,21 +114,32 @@ public class AceJumpAction extends EmacsIdeasAction {
                 return false;
             }
 
-            return _actionsPerformer.performAction(offsetsOfKey.getFirst(), this, _commandsAroundJump);
+            _performingAction = true;
+            boolean result = _actionsPerformer.performAction(offsetsOfKey.getFirst(), this, _commandsAroundJump);
+            _performingAction = false;
+            return result;
         }
 
         cleanupSetupsInAndBackToNormalEditingMode();
         return false;
     }
 
+    public void handleAction(AnAction action, @Nullable InputEvent inputEvent) {
+        if (_jumpToMarkerKeyListener != null && !_performingAction) {
+            if (action.toString().equals("Escape (null)"))
+                return;
+
+            if (action.toString().startsWith("AceJumpWord"))
+                return;
+
+            _commandsAroundJump.add(new TypeKeyAfterJumpCommand(getEditor(), action, inputEvent));
+        }
+    }
+
     private KeyListener createJumpToMarkupKeyListener(final AnActionEvent e) {
         return new KeyListener() {
             public void keyTyped(KeyEvent keyEvent) {
                 keyEvent.consume();
-                if (keyEvent.isShiftDown()) {
-                    addCommandAroundJump(new SelectAfterJumpCommand(_editor));
-                }
-
                 boolean jumpFinished = handleJumpToMarkerKey(keyEvent);
                 if (jumpFinished) {
                     _contentComponent.removeKeyListener(_jumpToMarkerKeyListener);

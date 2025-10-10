@@ -1,6 +1,7 @@
 package schoettker.acejump.reloaded.acejump.actions;
 
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.ui.Messages;
 import schoettker.acejump.reloaded.acejump.AceJumpAction;
 import schoettker.acejump.reloaded.acejump.command.CommandAroundJump;
 import schoettker.acejump.reloaded.acejump.marker.JOffset;
