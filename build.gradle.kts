@@ -6,7 +6,7 @@ plugins {
   id("org.jetbrains.intellij.platform") version "2.1.0"
 }
 
-group = "schoettker.acejump.reloaded2"
+group = "serydaniel.aceactions.AceActions"
 version = "1.0.2"
 
 repositories {
@@ -29,11 +29,11 @@ dependencies {
 intellijPlatform {
   pluginConfiguration {
     // Plugin ID
-    id.set("schoettker.acejump.reloaded2")
+    id.set("serydaniel.aceactions.AceActions")
     // Plugin display name
-    name.set("AceJump Reloaded2")
+    name.set("AceActions")
     // Plugin description
-    description.set("AceJump Reloaded is a plugin for IntelliJ IDEA that allows you to quickly navigate your code.")
+    description.set("A plugin to easily jump and perform actions inside code inspired by emacs. Fork from https://github.com/schoettker")
     ideaVersion {
       untilBuild = provider { null }
     }

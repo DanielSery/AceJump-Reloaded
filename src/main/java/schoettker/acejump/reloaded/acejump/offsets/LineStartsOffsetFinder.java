@@ -19,22 +19,22 @@ public class LineStartsOffsetFinder extends OffsetsFinder {
         String visibleText = document.getText(textRange);
         int startOffset = textRange.getStartOffset();
 
-            // Handle the first line (starting at position 0)
-            int currentPos = 0;
+        // Handle the first line (starting at position 0)
+        int currentPos = 0;
 
-            // Find first non-whitespace character in the first line
-            while (currentPos < visibleText.length() && Character.isWhitespace(visibleText.charAt(currentPos))) {
-                currentPos++;
-            }
+        // Find first non-whitespace character in the first line
+        while (currentPos < visibleText.length() && Character.isWhitespace(visibleText.charAt(currentPos))) {
+            currentPos++;
+        }
 
-            // If we found a non-whitespace character or reached the end, add this position
-            if (currentPos < visibleText.length()) {
-                lineStartOffsets.add(startOffset + currentPos);
-            }
+        // If we found a non-whitespace character or reached the end, add this position
+        if (currentPos < visibleText.length()) {
+            lineStartOffsets.add(startOffset + currentPos);
+        }
 
-            // Process remaining lines after each '\n'
-            for (int i = currentPos; i < visibleText.length(); i++) {
-                if (visibleText.charAt(i) == '\n' && i + 1 < visibleText.length()) {
+        // Process remaining lines after each '\n'
+        for (int i = currentPos; i < visibleText.length(); i++) {
+            if (visibleText.charAt(i) == '\n' && i + 1 < visibleText.length()) {
                 // Found a newline, check the next character
                 int lineStartPos = i + 1;
 

@@ -7,17 +7,15 @@ import org.jetbrains.annotations.NotNull;
 import schoettker.acejump.reloaded.acejump.actions.SelectJumpPerformer;
 import schoettker.acejump.reloaded.acejump.command.SelectAfterJumpCommand;
 import schoettker.acejump.reloaded.acejump.command.TypeKeyAfterJumpCommand;
-import schoettker.acejump.reloaded.acejump.offsets.WordEndOffsetFinder;
-import schoettker.acejump.reloaded.acejump.offsets.WordStartOffsetFinder;
+import schoettker.acejump.reloaded.acejump.offsets.LineStartsOffsetFinder;
 
-public class AceSelectCopyAction extends AnAction {
+public class AceSelectCommentAction extends AnAction {
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
-
         AceJumpAction.getInstance().switchEditorIfNeed(e);
-        AceJumpAction.getInstance().setOffsetsFinder(new WordStartOffsetFinder());
-        AceJumpAction.getInstance().setActionsPerformer(new SelectJumpPerformer(new WordEndOffsetFinder()));
+        AceJumpAction.getInstance().setOffsetsFinder(new LineStartsOffsetFinder());
+        AceJumpAction.getInstance().setActionsPerformer(new SelectJumpPerformer(new LineStartsOffsetFinder()));
         AceJumpAction.getInstance().performAction(e);
 
         AceJumpAction.getInstance().addCommandAroundJump(new SelectAfterJumpCommand(
@@ -26,7 +24,12 @@ public class AceSelectCopyAction extends AnAction {
 
         AceJumpAction.getInstance().addCommandAroundJump(new TypeKeyAfterJumpCommand(
                 AceJumpAction.getInstance().getEditor(),
-                IdeActions.ACTION_EDITOR_COPY
+                IdeActions.ACTION_EDITOR_MOVE_LINE_END_WITH_SELECTION
+        ));
+
+        AceJumpAction.getInstance().addCommandAroundJump(new TypeKeyAfterJumpCommand(
+                AceJumpAction.getInstance().getEditor(),
+                IdeActions.ACTION_COMMENT_LINE
         ));
     }
 }
