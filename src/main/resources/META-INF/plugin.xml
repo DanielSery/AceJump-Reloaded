@@ -31,11 +31,14 @@
     <applicationService serviceImplementation="schoettker.acejump.reloaded.options.PluginConfig" />
   </extensions>
   <actions>
-    <action id="schoettker.acejump.reloaded.acejump.AceJumpWordStartAction" class="schoettker.acejump.reloaded.acejump.AceJumpWordStartAction"
-
-            text="AceJumpWordStartAction"/>
+    <action id="schoettker.acejump.reloaded.acejump.AceJumpWordStartAction"
+            class="schoettker.acejump.reloaded.acejump.AceJumpWordStartAction" text="AceJumpWordStartAction"/>
     <action id="schoettker.acejump.reloaded.acejump.AceJumpWordEndAction"
             class="schoettker.acejump.reloaded.acejump.AceJumpWordEndAction" text="AceJumpWordEndAction"/>
+      <action id="schoettker.acejump.reloaded.acejump.AceJumpLineStartAction"
+              class="schoettker.acejump.reloaded.acejump.AceJumpLineStartAction" text="AceJumpLineStartAction"/>
+      <action id="schoettker.acejump.reloaded.acejump.AceJumpIdentifierAction"
+              class="schoettker.acejump.reloaded.acejump.AceJumpIdentifierAction" text="AceJumpIdentifierAction"/>
 
       <action id="schoettker.acejump.reloaded.acejump.AceSelectAction"
               class="schoettker.acejump.reloaded.acejump.AceSelectAction" text="AceJumpWordSelectAction"/>

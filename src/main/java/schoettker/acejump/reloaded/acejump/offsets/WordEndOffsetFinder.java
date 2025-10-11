@@ -26,12 +26,11 @@ public class WordEndOffsetFinder extends OffsetsFinder{
             }
 
             // Check if current character is a word character (letter, digit, or underscore)
-            if (Character.isJavaIdentifierStart(currentChar) || Character.isJavaIdentifierPart(currentChar)) {
+            if (isWord(currentChar) || isWord(currentChar)) {
 
                 // Check if this is the end of a word
                 boolean isWordEnd = (i == visibleText.length() - 1) ||
-                        !(Character.isJavaIdentifierStart(visibleText.charAt(i + 1)) ||
-                                Character.isJavaIdentifierPart(visibleText.charAt(i + 1)));
+                        !(isWord(visibleText.charAt(i + 1)) || isWord(visibleText.charAt(i + 1)));
 
                 if (isWordEnd) {
                     wordEndOffsets.add(startOffset + i + 1);
@@ -40,5 +39,9 @@ public class WordEndOffsetFinder extends OffsetsFinder{
         }
 
         return wordEndOffsets;
+    }
+
+    public boolean isWord(char c) {
+        return Character.isJavaIdentifierStart(c) || c == '"';
     }
 }

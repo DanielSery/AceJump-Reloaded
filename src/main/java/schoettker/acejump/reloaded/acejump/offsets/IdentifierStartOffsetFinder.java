@@ -8,7 +8,7 @@ import schoettker.acejump.reloaded.util.EditorUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WordStartOffsetFinder extends OffsetsFinder{
+public class IdentifierStartOffsetFinder extends OffsetsFinder{
 
     @Override
     public List<Integer> getOffsets(Editor editor) {
@@ -24,10 +24,10 @@ public class WordStartOffsetFinder extends OffsetsFinder{
             char currentChar = visibleText.charAt(i);
 
             // Check if current character is a word character (letter or digit)
-            if (isWord(currentChar)) {
+            if (Character.isJavaIdentifierStart(currentChar)) {
 
                 // Check if this is the start of a word
-                boolean isWordStart = (i == 0) || !isWord(previousChar);
+                boolean isWordStart = (i == 0) || !Character.isJavaIdentifierStart(previousChar);
                 if (isWordStart) {
                     wordStartOffsets.add(startOffset + i);
                 }
@@ -37,9 +37,5 @@ public class WordStartOffsetFinder extends OffsetsFinder{
         }
 
         return wordStartOffsets;
-    }
-
-    public boolean isWord(char c) {
-        return Character.isJavaIdentifierStart(c) || c == '"' || c == '@';
     }
 }
