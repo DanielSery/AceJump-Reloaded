@@ -7,7 +7,7 @@ import schoettker.acejump.reloaded.acejump.actions.SelectJumpPerformer;
 import schoettker.acejump.reloaded.acejump.command.SelectAfterJumpCommand;
 import schoettker.acejump.reloaded.acejump.offsets.WordStartOffsetFinder;
 
-public class AceJumpWordSelectAction extends AnAction {
+public class AceSelectAction extends AnAction {
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {

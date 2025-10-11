@@ -14,13 +14,11 @@ import java.awt.event.KeyEvent;
  */
 public class TypeKeyAfterJumpCommand extends CommandAroundJump {
 
-    private final AnAction _action;
-    private final InputEvent _inputEvent;
+    private final String _actionId;
 
-    public TypeKeyAfterJumpCommand(Editor editor, AnAction action, InputEvent inputEvent) {
+    public TypeKeyAfterJumpCommand(Editor editor, String actionId) {
         super(editor);
-        _inputEvent = inputEvent;
-        _action = action;
+        _actionId = actionId;
     }
 
     @Override
@@ -30,6 +28,6 @@ public class TypeKeyAfterJumpCommand extends CommandAroundJump {
 
     @Override
     public void afterJump() {
-        dispatchEvent(_action, _inputEvent);
+        dispatchEvent(_actionId);
     }
 }

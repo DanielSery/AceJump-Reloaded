@@ -1,11 +1,9 @@
 package schoettker.acejump.reloaded.acejump;
 
-import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.wm.ToolWindowManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -122,18 +120,6 @@ public class AceJumpAction extends EmacsIdeasAction {
 
         cleanupSetupsInAndBackToNormalEditingMode();
         return false;
-    }
-
-    public void handleAction(AnAction action, @Nullable InputEvent inputEvent) {
-        if (_jumpToMarkerKeyListener != null && !_performingAction) {
-            if (action.toString().equals("Escape (null)"))
-                return;
-
-            if (action.toString().startsWith("AceJumpWord"))
-                return;
-
-            _commandsAroundJump.add(new TypeKeyAfterJumpCommand(getEditor(), action, inputEvent));
-        }
     }
 
     private KeyListener createJumpToMarkupKeyListener(final AnActionEvent e) {

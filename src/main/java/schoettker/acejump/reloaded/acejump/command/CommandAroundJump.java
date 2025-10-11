@@ -1,12 +1,11 @@
 package schoettker.acejump.reloaded.acejump.command;
 
 import com.intellij.openapi.actionSystem.ActionManager;
-import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.ui.Messages;
 import schoettker.acejump.reloaded.acejump.marker.JOffset;
 
 import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 
 public class CommandAroundJump {
     private final Editor _se; /*source editor*/
@@ -40,11 +39,11 @@ public class CommandAroundJump {
         }
     }
 
-    void dispatchEvent(AnAction action, InputEvent inputEvent) {
+    void dispatchEvent(String actionId) {
         ActionManager.getInstance().tryToExecute(
-                action,
-                inputEvent,
-                _se.getContentComponent(),
+                ActionManager.getInstance().getAction(actionId),
+                new KeyEvent(_te.getContentComponent(), KeyEvent.KEY_PRESSED, System.currentTimeMillis(), InputEvent.CTRL_DOWN_MASK, KeyEvent.VK_ENTER, '\n'),
+                _te.getContentComponent(),
                 null,
                 true
         );
