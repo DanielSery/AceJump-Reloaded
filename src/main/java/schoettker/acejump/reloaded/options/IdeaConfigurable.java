@@ -19,6 +19,8 @@ public class IdeaConfigurable implements Configurable {
     private JCheckBox _needSelectTextAfterJump;
     private ColorPanel _panelBackground;
     private JCheckBox _toUpperCase;
+    private JCheckBox _wordStartAddLineEnd;
+    private JCheckBox _wordEndAddLineStart;
     private JComboBox<?> _fontType;
     private JSlider _bgOpacity;
     private JLabel _bgOpacityValue;
@@ -31,7 +33,7 @@ public class IdeaConfigurable implements Configurable {
     @Nls
     @Override
     public String getDisplayName() {
-        return "AceJump-Reloaded";
+        return "AceActions";
     }
 
     @Nullable
@@ -48,6 +50,8 @@ public class IdeaConfigurable implements Configurable {
         _panelBackground.setSelectedColor(config.getPanelBackground());
         _needSelectTextAfterJump.setSelected(config._needSelectTextAfterJump);
         _toUpperCase.setSelected(config._toUpperCase);
+        _wordStartAddLineEnd.setSelected(config._wordStartAddLineEnd);
+        _wordEndAddLineStart.setSelected(config._wordEndAddLineStart);
         _fontType.setSelectedItem(config._fontType);
         _bgOpacity.setValue(config._bgOpacity);
         _markersCharsets.setText(config._markersCharsets);
@@ -74,7 +78,9 @@ public class IdeaConfigurable implements Configurable {
                 || _fontType.getSelectedItem() != config._fontType
                 || _bgOpacity.getValue() != config._bgOpacity
                 || !_markersCharsets.getText().equals(config._markersCharsets)
-                || _toUpperCase.isSelected() != config._toUpperCase;
+                || _toUpperCase.isSelected() != config._toUpperCase
+                || _wordStartAddLineEnd.isSelected() != config._wordStartAddLineEnd
+                || _wordEndAddLineStart.isSelected() != config._wordEndAddLineStart;
     }
 
     @Override
@@ -101,6 +107,8 @@ public class IdeaConfigurable implements Configurable {
         }
         config._needSelectTextAfterJump = _needSelectTextAfterJump.isSelected();
         config._toUpperCase = _toUpperCase.isSelected();
+        config._wordStartAddLineEnd = _wordStartAddLineEnd.isSelected();
+        config._wordEndAddLineStart = _wordEndAddLineStart.isSelected();
         config._fontType = (String) _fontType.getSelectedItem();
         config._bgOpacity = _bgOpacity.getValue();
         config._markersCharsets = _markersCharsets.getText();

@@ -1,6 +1,5 @@
 package schoettker.acejump.reloaded.acejump.runnable;
 
-import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.Editor;
 import schoettker.acejump.reloaded.acejump.AceJumpAction;
 import schoettker.acejump.reloaded.acejump.marker.JOffset;
@@ -9,7 +8,6 @@ import schoettker.acejump.reloaded.acejump.marker.MarkersPanel;
 import schoettker.acejump.reloaded.options.PluginConfig;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class ShowMarkersRunnable implements Runnable {
@@ -45,7 +43,7 @@ public class ShowMarkersRunnable implements Runnable {
         int twiceJumpGroupCount = calcTwiceJumpGroupCount();
         int singleJumpCount = Math.min(getMarkerCharsets().length() - twiceJumpGroupCount, _offsets.size());
 
-        createSingleJumpMarkers(singleJumpCount);
+        createSingleJumpMarkers(singleJumpCount, twiceJumpGroupCount);
         if (twiceJumpGroupCount > 0) {
             createMultipleJumpMarkers(singleJumpCount);
         }
@@ -59,26 +57,31 @@ public class ShowMarkersRunnable implements Runnable {
         _action.showNewMarkersPanel(panels);
     }
 
-    private void createSingleJumpMarkers(int singleJumpCount) {
+    private void createSingleJumpMarkers(int singleJumpCount, int twiceJumpGroupCount) {
+        int offset = 0;
+        if (twiceJumpGroupCount > 0) {
+            offset = getMarkerCharsets().length() - singleJumpCount;
+        }
+
         for (int i = 0; i < singleJumpCount; i++) {
-            String marker = String.valueOf(getMarkerCharsets().charAt(i));
+            String marker = String.valueOf(getMarkerCharsets().charAt(offset + i));
             _markerCollection.addMarker(marker, _offsets.get(i));
         }
     }
 
     private void createMultipleJumpMarkers(int singleJumpCount) {
         int i = singleJumpCount;
+        int charLength = getMarkerCharsets().length();
 
         for (; i < _offsets.size(); i++) {
-            int group = (i - singleJumpCount) / getMarkerCharsets().length();
-            int markerCharIndex = singleJumpCount + group;
+            int markerCharIndex = (i - singleJumpCount) / charLength;
 
-            if (markerCharIndex > getMarkerCharsets().length() - 1) {
+            if (markerCharIndex > charLength - singleJumpCount - 1) {
                 break;
             }
 
             char markerChar = getMarkerCharsets().charAt(markerCharIndex);
-            char secondJumpMarkerChar = getMarkerCharsets().charAt((i - singleJumpCount) % getMarkerCharsets().length());
+            char secondJumpMarkerChar = getMarkerCharsets().charAt((i - singleJumpCount) % charLength);
 
             String marker = "" + markerChar + secondJumpMarkerChar;
             _markerCollection.addMarker(marker, _offsets.get(i));

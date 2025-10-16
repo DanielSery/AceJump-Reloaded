@@ -7,28 +7,28 @@ import com.intellij.openapi.components.Storage;
 import com.intellij.ui.JBColor;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
 
 @State(
     name = "schoettker.acejump.reloaded.options.PluginConfig",
-    storages = {@Storage(value = "AceJump-ReloadedPlugin.xml")})
+    storages = {@Storage(value = "AceActionsPlugin.xml")})
+
 public class PluginConfig implements PersistentStateComponent<PluginConfig> {
-  int _firstJumpBackground = new JBColor(new Color(214, 71, 255), new Color(237, 66, 124)).getRGB();
-  int _firstJumpForeground =
-      new JBColor(new Color(249, 255, 249), new Color(232, 232, 225)).getRGB();
-  int _secondJumpBackground = new JBColor(new Color(255, 149, 0), new Color(253, 149, 0)).getRGB();
-  int _secondJumpForeground =
-      new JBColor(new Color(255, 248, 248), new Color(254, 253, 254)).getRGB();
+  int _firstJumpBackground = new JBColor(new Color(0, 153, 255), new Color(0, 137, 230)).getRGB();
+  int _firstJumpForeground = new JBColor(new Color(249, 255, 249), new Color(232, 232, 225)).getRGB();
+  int _secondJumpBackground = new JBColor(new Color(0, 107, 179), new Color(0, 92, 153)).getRGB();
+  int _secondJumpForeground = new JBColor(new Color(255, 248, 248), new Color(254, 253, 254)).getRGB();
   boolean _needSelectTextAfterJump = true;
   int _panelBackground = new JBColor(new Color(111, 110, 110), new Color(71, 71, 73)).getRGB();
   public boolean _toUpperCase = true;
+  public boolean _wordStartAddLineEnd = false;
+  public boolean _wordEndAddLineStart = false;
   public String _fontType = "Bold";
-  public int _bgOpacity = 30;
+  public int _bgOpacity = 0;
 
   @SuppressWarnings("SpellCheckingInspection")
-  public String _markersCharsets = "asdfjeghiybcmnopqrtuvwkl";
+  public String _markersCharsets = "fjdksla;rueiwoqpvmc,x.z/ghtybn";
 
   public Color getFirstJumpBackground() {
     return new JBColor(new Color(_firstJumpBackground), new Color(_firstJumpBackground));

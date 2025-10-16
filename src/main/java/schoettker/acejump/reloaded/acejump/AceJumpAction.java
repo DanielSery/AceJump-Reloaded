@@ -33,7 +33,6 @@ public class AceJumpAction extends EmacsIdeasAction {
     private static volatile AceJumpAction _instance;
     private ActionPerformer _actionsPerformer = new SimpleJumpPerformer();
     private OffsetsFinder _offsetsFinder = new IdentifierStartOffsetFinder();
-    private boolean _performingAction = false;
 
     @SuppressWarnings("WeakerAccess")
     public AceJumpAction() {
@@ -108,10 +107,7 @@ public class AceJumpAction extends EmacsIdeasAction {
                 return false;
             }
 
-            _performingAction = true;
-            boolean result = _actionsPerformer.performAction(offsetsOfKey.getFirst(), this, _commandsAroundJump);
-            _performingAction = false;
-            return result;
+            return _actionsPerformer.performAction(offsetsOfKey.get(0), this, _commandsAroundJump);
         }
 
         cleanupSetupsInAndBackToNormalEditingMode();
