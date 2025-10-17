@@ -31,14 +31,51 @@
     <applicationService serviceImplementation="schoettker.acejump.reloaded.options.PluginConfig" />
   </extensions>
   <actions>
-      <action id="schoettker.acejump.reloaded.acejump.AceBracketCopy"
-              class="schoettker.acejump.reloaded.acejump.AceBracketCopy" text="Ace Bracket Copy (Bracket selection plugin)"/>
-      <action id="schoettker.acejump.reloaded.acejump.AceBracketCut"
-              class="schoettker.acejump.reloaded.acejump.AceBracketCut" text="Ace Bracket Cut (Bracket selection plugin)"/>
-      <action id="schoettker.acejump.reloaded.acejump.AceBracketDelete"
-              class="schoettker.acejump.reloaded.acejump.AceBracketDelete" text="Ace Bracket Delete (Bracket selection plugin)"/>
-      <action id="schoettker.acejump.reloaded.acejump.AceBracketSelect"
-              class="schoettker.acejump.reloaded.acejump.AceBracketSelect" text="Ace Bracket Select (Bracket selection plugin)"/>
+      <action id="schoettker.acejump.reloaded.acejump.AceJumpWordStartAction"
+              class="schoettker.acejump.reloaded.acejump.AceJumpWordStartAction" text="Ace Jump Word Start"/>
+      <action id="schoettker.acejump.reloaded.acejump.AceJumpWordEndAction"
+              class="schoettker.acejump.reloaded.acejump.AceJumpWordEndAction" text="Ace Jump Word End"/>
+      <action id="schoettker.acejump.reloaded.acejump.AceJumpLineStartAction"
+              class="schoettker.acejump.reloaded.acejump.AceJumpLineStartAction" text="Ace Jump Line Start"/>
+      <action id="schoettker.acejump.reloaded.acejump.AceJumpLineEndAction"
+              class="schoettker.acejump.reloaded.acejump.AceJumpLineEndAction" text="Ace Jump Line End"/>
+      <action id="schoettker.acejump.reloaded.acejump.AceJumpLineMarkAction"
+              class="schoettker.acejump.reloaded.acejump.AceJumpLineMarkAction" text="Ace Jump Line Mark"/>
+      <action id="schoettker.acejump.reloaded.acejump.AceJumpIdentifierAction"
+              class="schoettker.acejump.reloaded.acejump.AceJumpIdentifierAction" text="Ace Jump Identifier"/>
+      <action id="schoettker.acejump.reloaded.acejump.AceJumpPasteAction"
+              class="schoettker.acejump.reloaded.acejump.AceJumpPasteAction" text="Ace Jump Paste"/>
+
+      <action id="schoettker.acejump.reloaded.acejump.AceSelectAction"
+              class="schoettker.acejump.reloaded.acejump.AceSelectAction" text="Ace Select"/>
+      <action id="schoettker.acejump.reloaded.acejump.AceSelectCopyAction"
+              class="schoettker.acejump.reloaded.acejump.AceSelectCopyAction" text="Ace Select and Copy"/>
+      <action id="schoettker.acejump.reloaded.acejump.AceSelectCutAction"
+              class="schoettker.acejump.reloaded.acejump.AceSelectCutAction" text="Ace Select and Cut"/>
+      <action id="schoettker.acejump.reloaded.acejump.AceSelectDeleteAction"
+              class="schoettker.acejump.reloaded.acejump.AceSelectDeleteAction" text="Ace Select and Delete"/>
+
+      <action id="schoettker.acejump.reloaded.acejump.AceLineSelectCommentAction"
+              class="schoettker.acejump.reloaded.acejump.AceLineSelectCommentAction" text="Ace Select Lines and Comment out"/>
+      <action id="schoettker.acejump.reloaded.acejump.AceLineCopyAction"
+              class="schoettker.acejump.reloaded.acejump.AceLineCopyAction" text="Ace Lines Copy"/>
+      <action id="schoettker.acejump.reloaded.acejump.AceLineCutAction"
+              class="schoettker.acejump.reloaded.acejump.AceLineCutAction" text="Ace Lines Cut"/>
+      <action id="schoettker.acejump.reloaded.acejump.AceLineDeleteAction"
+              class="schoettker.acejump.reloaded.acejump.AceLineDeleteAction" text="Ace Lines Delete"/>
+      <action id="schoettker.acejump.reloaded.acejump.AceLineSelectAction"
+              class="schoettker.acejump.reloaded.acejump.AceLineSelectAction" text="Ace Lines Select"/>
+
+      <action id="schoettker.acejump.reloaded.acejump.AceSingleLineCommentAction"
+              class="schoettker.acejump.reloaded.acejump.AceSingleLineCommentAction" text="Ace Single Line Comment"/>
+      <action id="schoettker.acejump.reloaded.acejump.AceSingleLineCopyAction"
+              class="schoettker.acejump.reloaded.acejump.AceSingleLineCopyAction" text="Ace Single Line Copy"/>
+      <action id="schoettker.acejump.reloaded.acejump.AceSingleLineCutAction"
+              class="schoettker.acejump.reloaded.acejump.AceSingleLineCutAction" text="Ace Single Line Cut"/>
+      <action id="schoettker.acejump.reloaded.acejump.AceSingleLineDeleteAction"
+              class="schoettker.acejump.reloaded.acejump.AceSingleLineDeleteAction" text="Ace Single Line Delete"/>
+      <action id="schoettker.acejump.reloaded.acejump.AceSingleLineSelectAction"
+              class="schoettker.acejump.reloaded.acejump.AceSingleLineSelectAction" text="Ace Single Line Select"/>
 
       <action id="schoettker.acejump.reloaded.acejump.AceGoDeclarationAction"
               class="schoettker.acejump.reloaded.acejump.AceGoDeclarationAction" text="Ace Go to Declaration"/>
@@ -49,36 +86,15 @@
       <action id="schoettker.acejump.reloaded.acejump.AceGoUsagesAction"
               class="schoettker.acejump.reloaded.acejump.AceGoUsagesAction" text="Ace Go to Usages"/>
 
-      <action id="schoettker.acejump.reloaded.acejump.AceJumpIdentifierAction"
-              class="schoettker.acejump.reloaded.acejump.AceJumpIdentifierAction" text="Ace Jump Identifier"/>
-      <action id="schoettker.acejump.reloaded.acejump.AceJumpLineStartAction"
-              class="schoettker.acejump.reloaded.acejump.AceJumpLineStartAction" text="Ace Jump Line Start"/>
-      <action id="schoettker.acejump.reloaded.acejump.AceJumpPasteAction"
-              class="schoettker.acejump.reloaded.acejump.AceJumpPasteAction" text="Ace Jump Paste"/>
-      <action id="schoettker.acejump.reloaded.acejump.AceJumpWordEndAction"
-              class="schoettker.acejump.reloaded.acejump.AceJumpWordEndAction" text="Ace Jump Word End"/>
-    <action id="schoettker.acejump.reloaded.acejump.AceJumpWordStartAction"
-            class="schoettker.acejump.reloaded.acejump.AceJumpWordStartAction" text="Ace Jump Word Start"/>
+      <action id="schoettker.acejump.reloaded.acejump.AceBracketCopy"
+              class="schoettker.acejump.reloaded.acejump.AceBracketCopy" text="Ace Bracket Copy (Bracket selection plugin)"/>
+      <action id="schoettker.acejump.reloaded.acejump.AceBracketCut"
+              class="schoettker.acejump.reloaded.acejump.AceBracketCut" text="Ace Bracket Cut (Bracket selection plugin)"/>
+      <action id="schoettker.acejump.reloaded.acejump.AceBracketDelete"
+              class="schoettker.acejump.reloaded.acejump.AceBracketDelete" text="Ace Bracket Delete (Bracket selection plugin)"/>
+      <action id="schoettker.acejump.reloaded.acejump.AceBracketSelect"
+              class="schoettker.acejump.reloaded.acejump.AceBracketSelect" text="Ace Bracket Select (Bracket selection plugin)"/>
 
-      <action id="schoettker.acejump.reloaded.acejump.AceLineCommentAction"
-              class="schoettker.acejump.reloaded.acejump.AceLineCommentAction" text="Ace Line Comment"/>
-      <action id="schoettker.acejump.reloaded.acejump.AceLineCopyAction"
-              class="schoettker.acejump.reloaded.acejump.AceLineCopyAction" text="Ace Line Copy"/>
-      <action id="schoettker.acejump.reloaded.acejump.AceLineCutAction"
-              class="schoettker.acejump.reloaded.acejump.AceLineCutAction" text="Ace Line Cut"/>
-      <action id="schoettker.acejump.reloaded.acejump.AceLineDeleteAction"
-              class="schoettker.acejump.reloaded.acejump.AceLineDeleteAction" text="Ace Line Delete"/>
-
-      <action id="schoettker.acejump.reloaded.acejump.AceSelectAction"
-              class="schoettker.acejump.reloaded.acejump.AceSelectAction" text="Ace Select"/>
-      <action id="schoettker.acejump.reloaded.acejump.AceSelectCommentAction"
-              class="schoettker.acejump.reloaded.acejump.AceSelectCommentAction" text="Ace Select and Comment out"/>
-      <action id="schoettker.acejump.reloaded.acejump.AceSelectCopyAction"
-              class="schoettker.acejump.reloaded.acejump.AceSelectCopyAction" text="Ace Select and Copy"/>
-      <action id="schoettker.acejump.reloaded.acejump.AceSelectCutAction"
-              class="schoettker.acejump.reloaded.acejump.AceSelectCutAction" text="Ace Select and Cut"/>
-      <action id="schoettker.acejump.reloaded.acejump.AceSelectDeleteAction"
-              class="schoettker.acejump.reloaded.acejump.AceSelectDeleteAction" text="Ace Select and Delete"/>
   </actions>
   <change-notes><![CDATA[
 <ul>

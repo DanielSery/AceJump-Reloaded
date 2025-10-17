@@ -43,7 +43,7 @@ public class ShowMarkersRunnable implements Runnable {
         int twiceJumpGroupCount = calcTwiceJumpGroupCount();
         int singleJumpCount = Math.min(getMarkerCharsets().length() - twiceJumpGroupCount, _offsets.size());
 
-        createSingleJumpMarkers(singleJumpCount, twiceJumpGroupCount);
+        createSingleJumpMarkers(singleJumpCount);
         if (twiceJumpGroupCount > 0) {
             createMultipleJumpMarkers(singleJumpCount);
         }
@@ -57,12 +57,8 @@ public class ShowMarkersRunnable implements Runnable {
         _action.showNewMarkersPanel(panels);
     }
 
-    private void createSingleJumpMarkers(int singleJumpCount, int twiceJumpGroupCount) {
-        int offset = 0;
-        if (twiceJumpGroupCount > 0) {
-            offset = getMarkerCharsets().length() - singleJumpCount;
-        }
-
+    private void createSingleJumpMarkers(int singleJumpCount) {
+        int offset = getMarkerCharsets().length() - singleJumpCount;
         for (int i = 0; i < singleJumpCount; i++) {
             String marker = String.valueOf(getMarkerCharsets().charAt(offset + i));
             _markerCollection.addMarker(marker, _offsets.get(i));

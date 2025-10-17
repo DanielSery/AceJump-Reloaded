@@ -9,7 +9,7 @@ import schoettker.acejump.reloaded.acejump.command.SelectAfterJumpCommand;
 import schoettker.acejump.reloaded.acejump.command.TypeKeyAfterJumpCommand;
 import schoettker.acejump.reloaded.acejump.offsets.LineStartsOffsetFinder;
 
-public class AceSelectCommentAction extends AnAction {
+public class AceLineSelectCommentAction extends AnAction {
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {

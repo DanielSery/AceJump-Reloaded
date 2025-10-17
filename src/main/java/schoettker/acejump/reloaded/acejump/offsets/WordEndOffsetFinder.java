@@ -65,9 +65,7 @@ public class WordEndOffsetFinder extends OffsetsFinder{
                 if (isWord(currentChar)) {
 
                     // Check if this is the end of a word
-                    boolean isWordEnd = (i == visibleText.length() - 1) ||
-                            !(isWord(visibleText.charAt(i + 1)) || isWord(visibleText.charAt(i + 1)));
-
+                    boolean isWordEnd = (i == visibleText.length() - 1) || !isWord(visibleText.charAt(i + 1));
                     if (isWordEnd) {
                         wordEndOffsets.add(startOffset + i + 1);
                     }
@@ -89,9 +87,7 @@ public class WordEndOffsetFinder extends OffsetsFinder{
                 if (isWord(currentChar)) {
 
                     // Check if this is the end of a word
-                    boolean isWordEnd = (i == visibleText.length() - 1) ||
-                            !(isWord(visibleText.charAt(i + 1)) || isWord(visibleText.charAt(i + 1)));
-
+                    boolean isWordEnd = (i == visibleText.length() - 1) || !isWord(visibleText.charAt(i + 1));
                     if (isWordEnd) {
                         wordEndOffsets.add(startOffset + i + 1);
                     }

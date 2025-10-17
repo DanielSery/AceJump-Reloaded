@@ -8,7 +8,7 @@ import schoettker.acejump.reloaded.acejump.actions.SimpleJumpPerformer;
 import schoettker.acejump.reloaded.acejump.command.TypeKeyAfterJumpCommand;
 import schoettker.acejump.reloaded.acejump.offsets.LineStartsOffsetFinder;
 
-public class AceLineSelect extends AnAction {
+public class AceSingleLineCommentAction extends AnAction {
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
@@ -19,7 +19,7 @@ public class AceLineSelect extends AnAction {
 
         AceJumpAction.getInstance().addCommandAroundJump(new TypeKeyAfterJumpCommand(
                 AceJumpAction.getInstance().getEditor(),
-                IdeActions.ACTION_EDITOR_MOVE_LINE_END_WITH_SELECTION
+                IdeActions.ACTION_COMMENT_LINE
         ));
     }
 }

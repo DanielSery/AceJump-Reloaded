@@ -19,7 +19,7 @@ public class SelectJumpPerformer extends ActionPerformer{
 
     @Override
     public boolean performAction(JOffset offset, AceJumpAction aceJumpAction, Stack<CommandAroundJump> commandsAround) {
-        ApplicationManager.getApplication().runReadAction(new JumpRunnable(offset, aceJumpAction));
+        ApplicationManager.getApplication().runReadAction(new JumpRunnable(offset));
 
         AceJumpAction.getInstance().setOffsetsFinder(_nextOffsetFinder);
         AceJumpAction.getInstance().setActionsPerformer(new SimpleJumpPerformer());

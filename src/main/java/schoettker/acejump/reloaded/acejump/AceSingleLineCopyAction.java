@@ -4,28 +4,22 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.IdeActions;
 import org.jetbrains.annotations.NotNull;
-import schoettker.acejump.reloaded.acejump.actions.SelectJumpPerformer;
-import schoettker.acejump.reloaded.acejump.command.SelectAfterJumpCommand;
+import schoettker.acejump.reloaded.acejump.actions.SimpleJumpPerformer;
 import schoettker.acejump.reloaded.acejump.command.TypeKeyAfterJumpCommand;
-import schoettker.acejump.reloaded.acejump.offsets.LineMarksOffsetFinder;
+import schoettker.acejump.reloaded.acejump.offsets.LineStartsOffsetFinder;
 
-public class AceLineCutAction extends AnAction {
+public class AceSingleLineCopyAction extends AnAction {
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
-
         AceJumpAction.getInstance().switchEditorIfNeed(e);
-        AceJumpAction.getInstance().setOffsetsFinder(new LineMarksOffsetFinder());
-        AceJumpAction.getInstance().setActionsPerformer(new SelectJumpPerformer(new LineMarksOffsetFinder()));
+        AceJumpAction.getInstance().setOffsetsFinder(new LineStartsOffsetFinder());
+        AceJumpAction.getInstance().setActionsPerformer(new SimpleJumpPerformer());
         AceJumpAction.getInstance().performAction(e);
-
-        AceJumpAction.getInstance().addCommandAroundJump(new SelectAfterJumpCommand(
-                AceJumpAction.getInstance().getEditor()
-        ));
 
         AceJumpAction.getInstance().addCommandAroundJump(new TypeKeyAfterJumpCommand(
                 AceJumpAction.getInstance().getEditor(),
-                IdeActions.ACTION_EDITOR_CUT
+                IdeActions.ACTION_EDITOR_COPY
         ));
     }
 }

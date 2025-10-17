@@ -1,21 +1,14 @@
 package schoettker.acejump.reloaded.acejump.runnable;
 
-import com.intellij.openapi.editor.Document;
-import schoettker.acejump.reloaded.acejump.AceJumpAction;
 import schoettker.acejump.reloaded.acejump.marker.JOffset;
-import schoettker.acejump.reloaded.options.PluginConfig;
 
 public class JumpRunnable implements Runnable {
 
-    private JOffset _offsetToJump;
-    @SuppressWarnings("FieldCanBeLocal")
-    private AceJumpAction _action;
-    private final PluginConfig _config = PluginConfig.getInstance().getState();
+    private final JOffset _offsetToJump;
 
 
-    public JumpRunnable(JOffset _offsetToJump, AceJumpAction _action) {
+    public JumpRunnable(JOffset _offsetToJump) {
         this._offsetToJump = _offsetToJump;
-        this._action = _action;
     }
 
     @Override

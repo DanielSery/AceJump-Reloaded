@@ -16,7 +16,7 @@ public class SimpleJumpPerformer extends ActionPerformer{
             cmd.beforeJump(offset);
         }
 
-        ApplicationManager.getApplication().runReadAction(new JumpRunnable(offset, aceJumpAction));
+        ApplicationManager.getApplication().runReadAction(new JumpRunnable(offset));
 
         for (CommandAroundJump cmd : commandsAround) {
             cmd.preAfterJump(offset);
